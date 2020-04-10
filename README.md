@@ -3,6 +3,8 @@
 
 ## Preview
 
+## Requirements
+
 ## Patches
 
 - [alpha](https://dwm.suckless.org/patches/alpha/): 
@@ -14,4 +16,7 @@ This patch will make dwm run `~/.dwm/autostart_blocking.sh` and `~/.dwm/autostar
 
 In this build, those scripts are in the [scripts](scripts/) folder.
 
-![](dwm.png)
+<h1 align="center">
+	<img width="200" src="dwm.png" alt="dwm">
+	<br>
+</h1>
