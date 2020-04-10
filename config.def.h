@@ -68,6 +68,9 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
+static char xbacklight_perc[2] = "5";
+static const char *xbacklighcmd_inc[] = { "xbacklight", "-inc", xbacklight_perc, NULL };
+static const char *xbacklighcmd_dec[] = { "xbacklight", "-dec", xbacklight_perc, NULL };
 
 static char xbacklight_perc[2] = "5";
 static const char *xbacklighcmd_inc[] = { "xbacklight", "-inc", xbacklight_perc, NULL };
@@ -98,6 +101,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ 0,           XF86XK_MonBrightnessUp,     spawn,          {.v = xbacklighcmd_inc} },
+	{ 0,           XF86XK_MonBrightnessDown,   spawn,          {.v = xbacklighcmd_dec} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)

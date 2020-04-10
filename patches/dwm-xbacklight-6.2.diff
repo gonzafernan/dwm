@@ -1,0 +1,33 @@
+diff -up dwm-6.2/config.def.h dwm-6.2_patched/config.def.h
+--- dwm-6.2/config.def.h	2019-02-02 09:55:28.000000000 -0300
++++ dwm-6.2_patched/config.def.h	2020-04-10 20:39:03.504530385 -0300
+@@ -58,6 +58,9 @@ static const Layout layouts[] = {
+ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+ static const char *termcmd[]  = { "st", NULL };
++static char xbacklight_perc[2] = "5";
++static const char *xbacklighcmd_inc[] = { "xbacklight", "-inc", xbacklight_perc, NULL };
++static const char *xbacklighcmd_dec[] = { "xbacklight", "-dec", xbacklight_perc, NULL };
+ 
+ static Key keys[] = {
+ 	/* modifier                     key        function        argument */
+@@ -84,6 +87,8 @@ static Key keys[] = {
+ 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+ 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+ 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
++	{ 0,           XF86XK_MonBrightnessUp,     spawn,          {.v = xbacklighcmd_inc} },
++	{ 0,           XF86XK_MonBrightnessDown,   spawn,          {.v = xbacklighcmd_dec} },
+ 	TAGKEYS(                        XK_1,                      0)
+ 	TAGKEYS(                        XK_2,                      1)
+ 	TAGKEYS(                        XK_3,                      2)
+diff -up dwm-6.2/dwm.c dwm-6.2_patched/dwm.c
+--- dwm-6.2/dwm.c	2019-02-02 09:55:28.000000000 -0300
++++ dwm-6.2_patched/dwm.c	2020-04-10 20:28:22.067597559 -0300
+@@ -40,6 +40,7 @@
+ #include <X11/extensions/Xinerama.h>
+ #endif /* XINERAMA */
+ #include <X11/Xft/Xft.h>
++#include <X11/XF86keysym.h>
+ 
+ #include "drw.h"
+ #include "util.h"
