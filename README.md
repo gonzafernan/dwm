@@ -34,6 +34,10 @@ static char xbacklight_perc[2] = "5";
 
 The `xbacklight_perc` variable gives the value in percentage of brightness you increment or decrement every time you press the monitor brightness key (default to 5).
 
+## License
+
+![](https://img.shields.io/github/license/FernandezGFG/dwm)
+
 <h1 align="center">
         <img width="200" src="dwm.png" alt="dwm">
         <br>
