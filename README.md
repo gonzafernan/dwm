@@ -18,7 +18,8 @@ This patch will make dwm run `~/.dwm/autostart_blocking.sh` and `~/.dwm/autostar
 
 In this build, those scripts are in the [scripts](scripts/) folder.
 
-### xbacklight (personal patch)
+### xbacklight (personal patch)         ![](https://img.shields.io/github/v/release/FernandezGFG/dwm?label=xbacklight%20patch)
+
 This patch was developed by myself and [I sent it to suckless.org](https://lists.suckless.org/hackers/2004/17188.html). It's really simple: Adds keys to control monitor backlight using **xbackligh**. See [Backlight in the ArchWiki](https://wiki.archlinux.org/index.php/backlight).
 
 #### Requirements
