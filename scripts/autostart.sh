@@ -3,7 +3,6 @@
 # keyboard layout
 setxkbmap -layout latam
 
-
 # Establecer fondo y esquema de colores con wal (cache)
 wal -R
 
