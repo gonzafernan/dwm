@@ -12,6 +12,7 @@
 dwm-alpha-20180613-b69c870.diff
 - [autostart](https://dwm.suckless.org/patches/autostart/): dwm-autostart-20161205-bb3bd6f.diff
 - xbacklight
+- [systray](https://dwm.suckless.org/patches/systray/): dwm-systray-6.2.diff
 
 ### autostart
 This patch will make dwm run `~/.dwm/autostart_blocking.sh` and `~/.dwm/autostart.sh &` before entering the handler loop. One or both of these files can be ommited.
@@ -33,6 +34,23 @@ static char xbacklight_perc[2] = "5";
 ```
 
 The `xbacklight_perc` variable gives the value in percentage of brightness you increment or decrement every time you press the monitor brightness key (default to 5).
+
+### systray
+A simple system tray implementation. Multi-monitor is also supported. The tray is following the selected monitor.
+
+**systray** fails when is patched with **alpha**. To fix this, in the `[dwm.c](dwm.c)` file, I needed to change the following line in the `void updatesystray(void)` function:
+
+```c
+XFillRectangle(dpy, systray->win, drw->gc, 0, 0, w, bh);
+```
+
+with the following instead:
+
+```c
+XFillRectangle(dpy, systray->win, XCreateGC(dpy, root, 0 , NULL), 0, 0, w, bh);
+```
+
+You can see this better in [this commit](https://github.com/FernandezGFG/dwm/commit/490cb88e0216466442ed1b96ad9ef5badf6a1596). I could fix this thanks to [this post in reddit](https://www.reddit.com/r/dwm/comments/aqlicx/question_does_anyone_here_have_a_working_combined/).
 
 ## License
 
