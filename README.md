@@ -14,6 +14,8 @@ dwm-alpha-20180613-b69c870.diff
 - xbacklight
 - [systray](https://dwm.suckless.org/patches/systray/): dwm-systray-6.2.diff
 - [xrdb](https://dwm.suckless.org/patches/xrdb/): dwm-xrdb-6.2.diff
+- [fullgaps](https://dwm.suckless.org/patches/fullgaps/): dwm-fullgaps-6.2.diff
+- [dmenumatchtop](https://dwm.suckless.org/patches/dmenumatchtop/): dwm-dmenumatchtop-6.2.diff
 
 ## autostart
 This patch will make dwm run `~/.dwm/autostart_blocking.sh` and `~/.dwm/autostart.sh &` before entering the handler loop. One or both of these files can be ommited.
