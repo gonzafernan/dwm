@@ -11,7 +11,6 @@
 - [alpha](https://dwm.suckless.org/patches/alpha/): 
 dwm-alpha-20180613-b69c870.diff
 - [autostart](https://dwm.suckless.org/patches/autostart/): dwm-autostart-20161205-bb3bd6f.diff
-- xbacklight
 - [systray](https://dwm.suckless.org/patches/systray/): dwm-systray-6.2.diff
 - [xrdb](https://dwm.suckless.org/patches/xrdb/): dwm-xrdb-6.2.diff
 - [fullgaps](https://dwm.suckless.org/patches/fullgaps/): dwm-fullgaps-6.2.diff
@@ -21,22 +20,6 @@ dwm-alpha-20180613-b69c870.diff
 This patch will make dwm run `~/.dwm/autostart_blocking.sh` and `~/.dwm/autostart.sh &` before entering the handler loop. One or both of these files can be ommited.
 
 In this build, those scripts are in the [scripts](scripts/) folder.
-
-## xbacklight ![](https://img.shields.io/github/v/release/FernandezGFG/dwm?label=xbacklight%20patch)
-
-This patch was developed by myself and [I sent it to suckless.org](https://lists.suckless.org/hackers/2004/17188.html). It's really simple: Adds keys to control monitor backlight using **xbackligh**. See [Backlight in the ArchWiki](https://wiki.archlinux.org/index.php/backlight).
-
-#### Requirements
-- xbacklight
-
-#### Configuration
-Change the following line in your config file:
-
-```c
-static char xbacklight_perc[2] = "5";
-```
-
-The `xbacklight_perc` variable gives the value in percentage of brightness you increment or decrement every time you press the monitor brightness key (default to 5).
 
 ## systray
 A simple system tray implementation. Multi-monitor is also supported. The tray is following the selected monitor.
@@ -62,7 +45,28 @@ This patch also presents problems with alpha patch, but it's really easy to solv
 
 With that change it works.
 
-## License
+# Trying to contribute
+
+## xbacklight ![](https://img.shields.io/github/v/release/FernandezGFG/dwm?label=xbacklight%20patch)
+
+This patch was developed by myself and [I sent it to suckless.org](https://lists.suckless.org/hackers/2004/17188.html). It's really simple: Adds keys to control monitor backlight using **xbackligh**. See [Backlight in the ArchWiki](https://wiki.archlinux.org/index.php/backlight).
+
+#### Requirements
+- xbacklight
+
+#### Configuration
+Change the following line in your config file:
+
+```c
+static char xbacklight_perc[2] = "5";
+```
+
+The `xbacklight_perc` variable gives the value in percentage of brightness you increment or decrement every time you press the monitor brightness key (default to 5).
+
+### Why I removed *xbacklight* patch from my build?
+When I [proposed the patch](https://lists.suckless.org/hackers/2004/17188.html), Greg Minshall told me that he handles shortcuts like monitor backlight and volume outside dwm, using *xbindkeys*. After thinking about it, I convinced myself that it's a better choice. In any case, the patch is available to anyone who doesn't have the same opinion.
+
+# License
 
 ![](https://img.shields.io/github/license/FernandezGFG/dwm)
 
