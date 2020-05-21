@@ -4,7 +4,6 @@
 ## Preview
 
 ## Requirements
-- xbacklight
 
 ## Patches
 
@@ -24,7 +23,7 @@ In this build, those scripts are in the [scripts](scripts/) folder.
 ## systray
 A simple system tray implementation. Multi-monitor is also supported. The tray is following the selected monitor.
 
-**systray** fails when is patched with **alpha**. To fix this, in the `[dwm.c](dwm.c)` file, I needed to change the following line in the `void updatesystray(void)` function:
+**systray** fails when is patched with **alpha**. To fix this, in the [`dwm.c`](dwm.c) file, I needed to change the following line in the `void updatesystray(void)` function:
 
 ```diff
 - XFillRectangle(dpy, systray->win, drw->gc, 0, 0, w, bh);
