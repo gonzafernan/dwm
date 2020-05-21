@@ -6,7 +6,6 @@
 ## Requirements
 
 ## Patches
-
 - [alpha](https://dwm.suckless.org/patches/alpha/): 
 dwm-alpha-20180613-b69c870.diff
 - [autostart](https://dwm.suckless.org/patches/autostart/): dwm-autostart-20161205-bb3bd6f.diff
@@ -14,6 +13,7 @@ dwm-alpha-20180613-b69c870.diff
 - [xrdb](https://dwm.suckless.org/patches/xrdb/): dwm-xrdb-6.2.diff
 - [fullgaps](https://dwm.suckless.org/patches/fullgaps/): dwm-fullgaps-6.2.diff
 - [dmenumatchtop](https://dwm.suckless.org/patches/dmenumatchtop/): dwm-dmenumatchtop-6.2.diff
+- [activetagindicatorbar](https://dwm.suckless.org/patches/activetagindicatorbar/): dwm-activetagindicatorbar-6.2.diff
 
 ## autostart
 This patch will make dwm run `~/.dwm/autostart_blocking.sh` and `~/.dwm/autostart.sh &` before entering the handler loop. One or both of these files can be ommited.
@@ -43,6 +43,18 @@ This patch also presents problems with alpha patch, but it's really easy to solv
 ```
 
 With that change it works.
+
+## activetagindicatorbar
+This patch changes the rectangle indicating if a tag is used by a client into a bar above the tag name.
+
+The only problem is that you need to use a font which leaves enough space between the text of the tag name and the top of the bar. I wanted to use Hack font, so I fix this editing the following line in the [`dwm.c`](dwm.c) file:
+
+```diff
+- bh = drw->fonts->h + 2;
++ bh = drw->fonts->h + 10;
+```
+
+That increase the statusbar height a lot, but I didn't want to apply the statuspadding patch.
 
 # Trying to contribute
 
